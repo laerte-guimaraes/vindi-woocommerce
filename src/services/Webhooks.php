@@ -118,6 +118,14 @@ class VindiWebhooks
     update_post_meta($order->id, 'vindi_order', $order_post_meta);
     $this->vindi_settings->logger->log('Novo Período criado: Pedido #'.$order->id);
 
+    if ($this->vindi_settings->dependencies->is_wc_memberships_active()) {
+      $subscription->update_status(
+        'pending-cancel',
+        'O status da assinatura foi atualizado pela Vindi' .
+        'para evitar bloqueios de acesso em clientes relacionados ao plugin WooCommerce Memberships'
+      );
+    }
+
     // We've already processed the renewal
     remove_action( 'woocommerce_scheduled_subscription_payment', 'WC_Subscriptions_Manager::prepare_renewal' );
   }
@@ -186,6 +194,16 @@ class VindiWebhooks
     if ($vindi_order_info['bill']['status'] == 'paid') {
         $new_status = $this->vindi_settings->get_return_status();
         $order->update_status($new_status, __('O Pagamento foi realizado com sucesso pela Vindi.', VINDI));
+
+        $wc_subscription = $this->find_subscription_by_id($data->bill->subscription->code);
+        if (!$wc_subscription->has_status('active')) {
+            $wc_subscription->update_status(
+              'active',
+              'Recebemos a informação que o pagamento foi realizado!' .
+              'A assinatura foi reativada pela Vindi.'
+            );
+        }
+
         $this->update_next_payment($data);
     }
   }
