@@ -1168,6 +1168,8 @@ class VindiPaymentProcessor
         }
         if (sizeof($bills_status) == sizeof(array_keys($bills_status, 'paid'))) {
             $status = $this->vindi_settings->get_return_status();
+        } elseif (reset($bill['charges'])['payment_method']['code'] === 'bank_slip') {
+            $status = 'processing';
         } else {
             $status = 'pending';
         }
