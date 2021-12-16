@@ -509,5 +509,20 @@ class VindiRoutes
 
         return true;
     }
+
+    public function updatePeriod($period_id, $data)
+    {
+
+      $response = $this->api->request(sprintf(
+        'periods/%s',
+        filter_var($period_id, FILTER_SANITIZE_NUMBER_INT)
+      ), 'PUT', $data);
+
+      if (isset($response['period'])) {
+        return $response['period'];
+      }
+
+      return false;
+    }
 }
 ?>
