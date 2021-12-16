@@ -177,6 +177,8 @@ class VindiWebhooks
       } else {
         return;
       }
+
+      $this->fix_first_period_for_bankslip_subscriptions($data);
     }
     update_post_meta($order->id, 'vindi_order', $vindi_order);
 
@@ -490,6 +492,26 @@ class VindiWebhooks
       // update the subscription dates
       $subscription->update_dates(array('next_payment' => $next_payment));
       $subscription->update_dates(array('end_date' => $end_date));
+    }
+  }
+
+  private function fix_first_period_for_bankslip_subscriptions($data)
+  {
+	  $period = $data->bill->period;
+
+    if ($period &&
+        $period->cycle == 1 &&
+        $data->bill->charges[0]->payment_method->code === 'bank_slip'
+    ) {
+      $vindi_subscription = $this->routes->getSubscription($data->bill->subscription->id);
+      $interval = "{$vindi_subscription['interval_count']} {$vindi_subscription['interval']}";
+      $current_date = new DateTime('now');
+      $next_end_at = date_add(
+        $current_date,
+        date_interval_create_from_date_string($interval)
+      )->format('Y-m-d H:i:s');
+
+      $this->routes->updatePeriod($period->id, array('end_at' => $next_end_at));	
     }
   }
 
