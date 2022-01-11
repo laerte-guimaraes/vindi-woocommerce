@@ -80,7 +80,6 @@ class VindiSettings extends WC_Settings_API
       add_action('woocommerce_coupon_options', 'CouponsMetaBox::output', 40, 2);
       add_action('woocommerce_coupon_options_save', 'CouponsMetaBox::save', 10, 2);
       add_action('woocommerce_coupon_discount_types', 'CouponsMetaBox::remove_ws_recurring_discount', 10, 1);
-      add_action('admin_notices', array(&$this, 'wcs_automatic_payment_settings'));
     }
   }
 
@@ -327,15 +326,4 @@ class VindiSettings extends WC_Settings_API
   {
     return 'yes' === $this->settings['send_nfe_information'];
   }
-
-    /**
-    * Warning if WCS automatic payments settings are disabled
-    **/
-    public function wcs_automatic_payment_settings()
-    {
-        if('yes' != get_option('woocommerce_subscriptions_turn_off_automatic_payments'))
-            return;
-
-        $this->get_template('wcs-automatic-payment-deactivated-message.html.php');
-    }
 }
