@@ -121,7 +121,7 @@ class VindiWebhooks
     if ($this->vindi_settings->dependencies->is_wc_memberships_active()) {
       $subscription->update_status(
         'pending-cancel',
-        'O status da assinatura foi atualizado pela Vindi' .
+        'O status da assinatura foi atualizado pela Vindi ' .
         'para evitar bloqueios de acesso em clientes relacionados ao plugin WooCommerce Memberships'
       );
       $subscription->update_dates(array('end_date' => $this->format_date($renew_infos['bill_due_at'])));
