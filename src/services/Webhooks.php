@@ -124,7 +124,9 @@ class VindiWebhooks
         'O status da assinatura foi atualizado pela Vindi ' .
         'para evitar bloqueios de acesso em clientes relacionados ao plugin WooCommerce Memberships'
       );
-      $subscription->update_dates(array('end_date' => $this->format_date($renew_infos['bill_due_at'])));
+
+      $end_date = date('Y-m-d H:i:s', strtotime($renew_infos['bill_due_at'] . ' + 4 days'));
+      $subscription->update_dates(array('end_date' => $end_date));
     }
 
     // We've already processed the renewal
