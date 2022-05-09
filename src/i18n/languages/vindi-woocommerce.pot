@@ -464,6 +464,10 @@ msgstr ""
 msgid "Código de Segurança"
 msgstr ""
 
+# templates/creditcard-checkout.html.php:71
+msgid "Bandeira do cartão"
+msgstr ""
+
 #: templates/creditcard-checkout.html.php:173
 msgid "Número de Parcelas"
 msgstr ""

@@ -13,123 +13,7 @@
 
   <?php do_action('vindi_credit_card_form_start', $id); ?>
 
-  <?php if(!empty($user_payment_profile)): ?>
-    <div class="vindi-old-cc-data">
-      <p class="form-row">
-        <label>
-          <?php _e("Cartão Cadastrado", VINDI); ?>
-        </label>
-        <br>
-        <?php echo $user_payment_profile['holder_name']; ?><br>
-        <div class="vindi-old-paymentcompany" style="background: url('https://s3.amazonaws.com/recurrent/payment_companies/<?php echo $user_payment_profile['payment_company']?>.png') no-repeat center right; background-size: auto 90%;">
-          <?php echo $user_payment_profile['card_number']; ?>
-        </div>
-        <input class="vindi-old-cc-data-check" type="hidden" value='1' name="vindi-old-cc-data-check">
-      </p>
-
-      <p class="form-row">
-        <a href="#" class="vindi-change-card"><?php echo __('usar outro cartão', VINDI); ?></a>
-      </p>
-    </div>
-  <?php endif; ?>
-
-  <div class='vindi-new-cc-data' style="<?php if(!empty($user_payment_profile)) echo 'display: none'; ?>">
-    <div class="vindi_cc_card-container vindi_cc_preload">
-      <div class="vindi_cc_creditcard">
-        <div class="front">
-          <div id="vindi_cc_ccsingle"></div>
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="vindi_cc_cardfront" x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
-            <mask id="vindi_cc_lightmask" x="0" y="0" width="600" height="370" maskUnits="userSpaceOnUse">
-              <g id="mask0">
-                <rect class="cls-1" x="0" y="0" width="600" height="370" fill="#fff"/>
-              </g>
-            </mask>
-            <g id="Front">
-              <g id="CardBackground">
-                <g id="Page-1_1_">
-                  <g id="amex_1_">
-                    <path id="Rectangle-1_1_" class="vindi_cc_cardcolor greydark" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40C0,17.9,17.9,0,40,0z" />
-                  </g>
-                </g>
-                <g xmlns="http://www.w3.org/2000/svg" mask="url(#vindi_cc_lightmask)">
-                  <path xmlns="http://www.w3.org/2000/svg" class="vindi_cc_lightcolor" d="M 0 0 V 370 C 262 360 570 198 600 0"/>
-                </g>
-              </g>
-              <text transform="matrix(1 0 0 1 60.106 295.0121)" id="vindi_cc_svgnumber" class="st2 st3 st4">0123 4567 8910 1112</text>
-              <text transform="matrix(1 0 0 1 54.1064 428.1723)" id="vindi_cc_svgname" class="st2 st5 st6">JOÃO DA SILVA</text>
-              <text transform="matrix(1 0 0 1 54.1074 389.8793)" class="st7 st5 st8"><?php _e("Nome", VINDI); ?></text>
-              <text transform="matrix(1 0 0 1 479.7754 388.8793)" class="st7 st5 st8"><?php _e("Validade", VINDI); ?></text>
-              <text transform="matrix(1 0 0 1 65.1054 241.5)" class="st7 st5 st8"><?php _e("Número do Cartão", VINDI); ?></text>
-              <g>
-                <text transform="matrix(1 0 0 1 574.4219 433.8095)" id="vindi_cc_svgexpire" class="st2 st5 st9">01/23</text>
-                <text transform="matrix(1 0 0 1 479.3848 417.0097)" class="st2 st10 st11">VALID</text>
-                <text transform="matrix(1 0 0 1 479.3848 435.6762)" class="st2 st10 st11">THRU</text>
-                <polygon class="st2" points="554.5,421 540.4,414.2 540.4,427.9"/>
-              </g>
-              <g id="cchip">
-                <g>
-                  <path class="st2" d="M168.1,143.6H82.9c-10.2,0-18.5-8.3-18.5-18.5V74.9c0-10.2,8.3-18.5,18.5-18.5h85.3 c10.2,0,18.5,8.3,18.5,18.5v50.2C186.6,135.3,178.3,143.6,168.1,143.6z"/>
-                </g>
-                <g>
-                  <g>
-                    <rect x="82" y="70" class="st12" width="1.5" height="60"/>
-                  </g>
-                  <g>
-                    <rect x="167.4" y="70" class="st12" width="1.5" height="60"/>
-                  </g>
-                  <g>
-                    <path class="st12" d="M125.5,130.8c-10.2,0-18.5-8.3-18.5-18.5c0-4.6,1.7-8.9,4.7-12.3c-3-3.4-4.7-7.7-4.7-12.3               c0-10.2,8.3-18.5,18.5-18.5s18.5,8.3,18.5,18.5c0,4.6-1.7,8.9-4.7,12.3c3,3.4,4.7,7.7,4.7,12.3               C143.9,122.5,135.7,130.8,125.5,130.8z M125.5,70.8c-9.3,0-16.9,7.6-16.9,16.9c0,4.4,1.7,8.6,4.8,11.8l0.5,0.5l-0.5,0.5               c-3.1,3.2-4.8,7.4-4.8,11.8c0,9.3,7.6,16.9,16.9,16.9s16.9-7.6,16.9-16.9c0-4.4-1.7-8.6-4.8-11.8l-0.5-0.5l0.5-0.5               c3.1-3.2,4.8-7.4,4.8-11.8C142.4,78.4,134.8,70.8,125.5,70.8z"/>
-                  </g>
-                  <g>
-                    <rect x="82.8" y="82.1" class="st12" width="25.8" height="1.5"/>
-                  </g>
-                  <g>
-                    <rect x="82.8" y="117.9" class="st12" width="26.1" height="1.5"/>
-                  </g>
-                  <g>
-                    <rect x="142.4" y="82.1" class="st12" width="25.8" height="1.5"/>
-                  </g>
-                  <g>
-                    <rect x="142" y="117.9" class="st12" width="26.2" height="1.5"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-            <g id="Back">
-            </g>
-          </svg>
-        </div>
-        <div class="back">
-          <svg version="1.1" id="vindi_cc_cardback" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
-            <g id="Front">
-                <line class="st0" x1="35.3" y1="10.4" x2="36.7" y2="11" />
-            </g>
-            <g id="Back">
-              <g id="Page-1_2_">
-                <g id="amex_2_">
-                  <path id="Rectangle-1_2_" class="vindi_cc_cardcolor greydark" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40C0,17.9,17.9,0,40,0z" />
-                </g>
-              </g>
-              <rect y="61.6" class="st2" width="750" height="78" />
-              <g>
-                <path class="st3" d="M701.1,249.1H48.9c-3.3,0-6-2.7-6-6v-52.5c0-3.3,2.7-6,6-6h652.1c3.3,0,6,2.7,6,6v52.5C707.1,246.4,704.4,249.1,701.1,249.1z" />
-                <rect x="42.9" y="198.6" class="st4" width="664.1" height="10.5" />
-                <rect x="42.9" y="224.5" class="st4" width="664.1" height="10.5" />
-                <path class="st5" d="M701.1,184.6H618h-8h-10v64.5h10h8h83.1c3.3,0,6-2.7,6-6v-52.5C707.1,187.3,704.4,184.6,701.1,184.6z" />
-              </g>
-              <text transform="matrix(1 0 0 1 621.999 227.2734)" id="vindi_cc_svgsecurity" class="st6 st7">985</text>
-              <g class="st8">
-                <text transform="matrix(1 0 0 1 630.083 280.0879)" class="st9 st6 st10"><?php _e("CVC", VINDI); ?></text>
-              </g>
-              <rect x="58.1" y="378.6" class="st11" width="375.5" height="13.5" />
-              <rect x="58.1" y="405.6" class="st11" width="421.7" height="13.5" />
-              <text transform="matrix(1 0 0 1 59.5073 228.6099)" id="vindi_cc_svgnameback" class="st12 st13">João da Silva</text>
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
+  <div class="vindi-new-cc-data">
     <div class="vindi_cc_form-container">
       <div class="field-container">
         <label for="vindi_cc_name">
@@ -153,7 +37,7 @@
           <?php _e("Validade (mm/aa)", VINDI) ?>
           <span class="required">*</span>
         </label>
-        <input id="vindi_cc_expirationdate" type="text" pattern="[0-9]*" inputmode="numeric" placeholder="mm/aa" autocomplete="off">
+        <input id="vindi_cc_expirationdate" name="vindi_cc_expirationdate" type="text" pattern="[0-9]*" inputmode="numeric" placeholder="mm/aa" autocomplete="off">
       </div>
       <div class="field-container">
         <label for="vindi_cc_securitycode">
@@ -162,7 +46,18 @@
         </label>
         <input id="vindi_cc_securitycode" name="vindi_cc_cvc" type="text" pattern="[0-9]*" inputmode="numeric" placeholder="CVC" autocomplete="off">
       </div>
-      <input name="vindi_cc_paymentcompany" type="hidden">
+            <div class="field-container">
+        <label for="vindi_cc_paymentcompany">
+            <?php _e("Bandeira do cartão", VINDI_IDENTIFIER); ?>
+            <span class="required">*</span>
+        </label>
+        <select id="vindi_cc_paymentcompany" name="vindi_cc_paymentcompany" class="input-text" style="width: 100%">
+          <option></option>
+          <?php foreach($payment_methods['credit_card'] as $payment_company): ?>
+            <option value="<?php echo $payment_company['code']; ?>"><?php echo $payment_company['name']; ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
       <input name="vindi_cc_monthexpiry" type="hidden">
       <input name="vindi_cc_yearexpiry" type="hidden">
     </div>
@@ -186,3 +81,47 @@
 
   <div class="clear"></div>
 </fieldset>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+<script type="text/javascript">
+	$("#vindi_cc_cardnumber").on('change keydown paste input', function(){
+		  validateCreditCardNumber();
+	});
+
+  var visaPattern = /^4\d{12}(\d{3})?$/;
+  var masterPattern = /^(5[1-5]\d{4}|677189)\d{10}$/;
+  var dinnersPattern = /^3(0[0-5]|[68]\d)\d{11}$/;
+  var amexPattern = /^3[47]\d{13}$/;
+  var discoveryPattern = /^6(?:011|5[0-9]{2})[0-9]{12}$/; 
+  var jcbPattern = /^(?:2131|1800|35\d{3})\d{11}$/;
+  var auraPattern = /^(5078\d{2})(\d{2})(\d{11})$/;
+  var hipercardPattern = /^(606282\d{10}(\d{3})?)|(3841\d{15})$/;
+  var eloPattern = /^(50(67(0[78]|1[5789]|2[012456789]|3[0123459]|4[0-7]|53|7[4-8])|9(0(0[0-9]|1[34]|2[0134567]|3[0359]|4[01235678]|5[015789]|6[012356789]|7[013]|8[1234789]|9[1379])|1(0[34568]|4[6-9]|5[1-8]|8[36789])|2(2[02]|5[7-9]|6[012356789]|7[012345689]|8[012356789]|90)|357|4(0[7-9]|1[0-9]|2[0-2]|5[7-9]|6[0-7]|8[45])|55[01]|636|7(2[3-8]|31|6[5-9])))|4(0117[89]|3(1274|8935)|5(1416|7(393|63[12])))|6(27780|36368|5(0(0(3[1258]|4[026]|7[78])|4(06|1[0234]|2[2-9]|3[04589]|8[5-9]|9[0-9])|5(0[01346789]|1[012456789]|2[0-9]|3[0178]|5[2-9]|6[0-6]|7[7-9]|8[0134678]|9[1-8])|72[0-7]|9(0[1-9]|1[0-8]|2[0128]|3[89]|4[6-9]|5[0158]|6[2-9]|7[01]))|16(5[236789]|6[025678]|7[01456789]|88)|50(0[01356789]|1[2568]|36|5[1267]))))$/;
+
+  function validateCreditCardNumber() {
+      var ccNum  = document.getElementById("vindi_cc_cardnumber").value.replace(/ /g,'');
+
+      if (eloPattern.test( ccNum ) === true) {
+          document.getElementById("vindi_cc_paymentcompany").value = "elo";
+      } else if (hipercardPattern.test( ccNum ) === true) {
+          document.getElementById("vindi_cc_paymentcompany").value = "hipercard";
+      } else if (dinnersPattern.test( ccNum ) === true) {
+          document.getElementById("vindi_cc_paymentcompany").value = "diners_club";
+      } else if (amexPattern.test( ccNum ) === true) {
+          document.getElementById("vindi_cc_paymentcompany").value = "american_express";
+      } else if (masterPattern.test( ccNum ) === true) {
+         document.getElementById("vindi_cc_paymentcompany").value = "mastercard";
+      } else if (visaPattern.test( ccNum ) === true) {
+          document.getElementById("vindi_cc_paymentcompany").value = "visa";
+      } else if (discoveryPattern.test( ccNum ) === true) {
+          document.getElementById("vindi_cc_paymentcompany").value = "discover";
+      } else if (jcbPattern.test( ccNum ) === true) {
+          document.getElementById("vindi_cc_paymentcompany").value = "jcb";
+      } else {
+          document.getElementById("vindi_cc_paymentcompany").value = "";
+      } 
+  }
+</script>
+
