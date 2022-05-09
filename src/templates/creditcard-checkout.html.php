@@ -46,7 +46,7 @@
         </label>
         <input id="vindi_cc_securitycode" name="vindi_cc_cvc" type="text" pattern="[0-9]*" inputmode="numeric" placeholder="CVC" autocomplete="off">
       </div>
-            <div class="field-container">
+      <div class="field-container">
         <label for="vindi_cc_paymentcompany">
             <?php _e("Bandeira do cartão", VINDI_IDENTIFIER); ?>
             <span class="required">*</span>
