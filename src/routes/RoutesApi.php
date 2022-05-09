@@ -369,7 +369,7 @@ class VindiRoutes
           continue;
         }
 
-        if ('PaymentMethod::CreditCard' === $method['type']) {
+        if ('PaymentMethod::CreditCard' === $method['type'] && 'credit_card' === $method['code']) {
           $payment_methods['credit_card'] = array_merge(
             $payment_methods['credit_card'],
             $method['payment_companies']
