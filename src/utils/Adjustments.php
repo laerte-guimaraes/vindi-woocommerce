@@ -184,9 +184,24 @@ class VindiAdjustments
                 'quantity' => $order_item->get_quantity(),
                 'price' => sprintf('%0.2f', round($changes['price'], 2))
             );
+
+            $this->set_order_item_price($order_item, $changes['price']);
         }
 
+        $order->calculate_totals();
         return $wc_product_items;
+    }
+
+    /**
+     * @param WC_Order_Item $order_item
+     * @param float $price
+     *
+     * @return array
+     */
+    public function set_order_item_price($order_item, $price)
+    {
+        $order_item->set_subtotal($price);
+        $order_item->set_total($price * $order_item->get_quantity());
     }
 
     /**
