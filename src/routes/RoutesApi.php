@@ -534,5 +534,15 @@ class VindiRoutes
 
         return $response;
     }
+
+    public function getSubscriptionsByPlanID($plan_id)
+    {
+        $plan_id = filter_var($plan_id, FILTER_SANITIZE_NUMBER_INT);
+        $query = urlencode("plan_id={$plan_id}");
+
+        $response = $this->api->request('subscriptions?query=' . $query, 'GET');
+
+        return $response['subscriptions'];
+    }
 }
 ?>
