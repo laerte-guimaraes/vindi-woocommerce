@@ -1,17 +1,17 @@
 === Vindi WooCommerce 2 ===
 Contributors: laertejr, rodasistemas, cleberbonifacio
-Plugin Name: Vindi WooCommerce 2 CUSTOM
+Plugin Name: Vindi WooCommerce 2 CUSTOM v3
 Plugin URI: https://github.com/vindi/vindi-woocommerce
 Website Link: https://www.vindi.com.br
 Tags: vindi, subscriptions, pagamento-recorrente, cobranca-recorrente, cobrança-recorrente, recurring, site-de-assinatura, assinaturas, faturamento-recorrente, recorrencia, assinatura, woocommerce-subscriptions, vindi-woocommerce, vindi-payment-gateway
 Author URI: https://vindi.com.br/ | https://mentores.com.br
 Author: Vindi | Mentores Digital
 Requires at least: 4.4
-Tested up to: 5.8.2
+Tested up to: 6.0
 WC requires at least: 3.0.0
-WC tested up to: 4.8.0
+WC tested up to: 6.5.1
 Requires PHP: 5.6
-Stable Tag: 1.1.11 c
+Stable Tag: 1.1.11.3 c
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,6 +39,10 @@ Para dúvidas e suporte técnico, entre em contato com a equipe Vindi através d
 5. Configurações de pagamentos via cartão de crédito
 
 == Changelog ==
+= 1.1.11.3 c - 06/06/2022 =
+-Lançamento da versão de patch.
+- **Adição**: Ao atualizar o preço de um produto do tipo "assinatura" ou "assinatura variável", todas as assinaturas ativas com esse produto terão seus valores atualizados. Essas atualizações também serão refletidas na Plataforma Vindi.
+
 = 1.1.11 c - 15/12/2021 =
 -Lançamento da versão de patch.
 - **Adição**: Clientes que possuírem a extensão "WooCommerce Memberships", terão os pedidos alterados para "Pendente de cancelamento" ao invés de "Aguardando".
