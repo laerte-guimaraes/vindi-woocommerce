@@ -55,6 +55,11 @@ class WC_Vindi_Payment extends AbstractInstance
    */
   private $subscription_items_handler;
 
+  /**
+   * @var VindiAdjustments
+   */
+  private $adjustments;
+
   public function __construct()
   {
 
@@ -72,6 +77,7 @@ class WC_Vindi_Payment extends AbstractInstance
     $this->subscription_items_handler = new VindiSubscriptionItemsHandler($this->settings);
     $this->vindi_status_notifier = new VindiProductStatus($this->settings);
     $this->interest_price_handler = new InterestPriceHandler();
+    $this->adjustments = new VindiAdjustments($this->settings);
 
     /**
       * Add Gateway to Woocommerce
@@ -113,6 +119,7 @@ class WC_Vindi_Payment extends AbstractInstance
     require_once $this->getPath() . '/utils/SubscriptionStatusHandler.php';
     require_once $this->getPath() . '/utils/SubscriptionItemsHandler.php';
     require_once $this->getPath() . '/utils/InterestPriceHandler.php';
+    require_once $this->getPath() . '/utils/Adjustments.php';
 
     require_once $this->getPath() . '/includes/admin/ProductStatus.php';
 
