@@ -80,42 +80,46 @@ class VindiAdjustments
      */
     public function prepare_order_items($vindi_product_id, $vindi_plan_id, $product)
     {
-        $vindi_subscriptions = $this->routes->getSubscriptionsByPlanID($vindi_plan_id);
+        $page = 1;
 
-        foreach ($vindi_subscriptions as $vindi_subscription) {
-            $data = $product->get_data();
-            $orders = wc_get_orders(array(
-                'meta_query'    => array(
-                    array(
-                        'key'   => 'vindi_subscription_id',
-                        'value' => $vindi_subscription['id'],
-                    )
-                )
-            ));
-
-            foreach ($orders as $order) {
-                $related_subscriptions = wcs_get_subscriptions_for_order(
-                    $order->ID,
-                    array(
-                        'order_type' => array(
-                            'parent', 'renewal'
+        while (!empty($vindi_subscriptions = $this->routes->getSubscriptionsByPlanID($vindi_plan_id, $page))) {
+            foreach ($vindi_subscriptions as $vindi_subscription) {
+                $data = $product->get_data();
+                $orders = wc_get_orders(array(
+                    'meta_query'    => array(
+                        array(
+                            'key'   => 'vindi_subscription_id',
+                            'value' => $vindi_subscription['id'],
                         )
                     )
-                );
+                ));
 
-                if (1 == count($related_subscriptions)
-                    && is_a($subscription = reset($related_subscriptions), 'WC_Subscription')
-                    && $subscription->get_status() != 'cancelled'
-                ) {
-                    $changes = array(
-                        'vindi_product_id' => $vindi_product_id,
-                        'price'            => $data['price'] ? : 0
+                foreach ($orders as $order) {
+                    $related_subscriptions = wcs_get_subscriptions_for_order(
+                        $order->ID,
+                        array(
+                            'order_type' => array(
+                                'parent', 'renewal'
+                            )
+                        )
                     );
 
-                    $this->synchronize_order_items($subscription, $changes, $vindi_subscription);
+                    if (1 == count($related_subscriptions)
+                        && is_a($subscription = reset($related_subscriptions), 'WC_Subscription')
+                        && $subscription->get_status() != 'cancelled'
+                    ) {
+                        $changes = array(
+                            'vindi_product_id' => $vindi_product_id,
+                            'price'            => $data['price'] ? : 0
+                        );
+
+                        $this->synchronize_order_items($subscription, $changes, $vindi_subscription);
+                    }
                 }
+
             }
 
+            $page++;
         }
     }
 
@@ -126,17 +130,6 @@ class VindiAdjustments
      */
     public function synchronize_order_items($wc_subscription, $changes, $vindi_subscription)
     {
-        /*
-        O filtro de status das assinaturas na Vindi foi removido
-        por ser conflitante com a funcionalidade "Sincronismo de assinaturas".
-        /Uma assinatura pendente de pagamento pode possuir o status `cancelado` na Vindi
-        if (!array_key_exists('status', $vindi_subscription)
-            || $vindi_subscription['status'] != 'active'
-        ) {
-            return;            
-        }
-        */
-
         $vindi_subscription_product_items = $this->vindi_subscription_product_items($vindi_subscription);
         $wc_product_items = $this->wc_product_items($wc_subscription, $changes);
         
