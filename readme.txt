@@ -39,13 +39,20 @@ Para dúvidas e suporte técnico, entre em contato com a equipe Vindi através d
 5. Configurações de pagamentos via cartão de crédito
 
 == Changelog ==
+= 1.1.12 - 08/06/2022 =
+-Lançamento da versão de patch.
+- **Correção**: Foi removido o envio da descrição do produto para a plataforma Vindi para evitar possíveis erros no cadastro de produtos.
+
+
 = 1.1.11.4 c - 16/06/2022 =
 -Lançamento da versão de patch.
 - **Adição**: Foi inserida a paginação para quando existem mais de 25 assinaturas com o mesmo plano na funcionalidade de reajuste de assinaturas.
 
+
 = 1.1.11.3 c - 06/06/2022 =
 -Lançamento da versão de patch.
 - **Adição**: Ao atualizar o preço de um produto do tipo "assinatura" ou "assinatura variável", todas as assinaturas ativas com esse produto terão seus valores atualizados. Essas atualizações também serão refletidas na Plataforma Vindi.
+
 
 = 1.1.11 c - 15/12/2021 =
 -Lançamento da versão de patch.
