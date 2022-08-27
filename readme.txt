@@ -11,7 +11,7 @@ Tested up to: 6.0
 WC requires at least: 3.0.0
 WC tested up to: 6.5.1
 Requires PHP: 5.6
-Stable Tag: 1.1.11.4 c
+Stable Tag: 1.1.12.1 c
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,6 +39,11 @@ Para dúvidas e suporte técnico, entre em contato com a equipe Vindi através d
 5. Configurações de pagamentos via cartão de crédito
 
 == Changelog ==
+= 1.1.12.1 c - 27/08/2022 =
+-Lançamento da versão de patch.
+- **Correção**: Foi desabilitada a renovação automática de pedidos através do WooCommerce Subscriptions, e a gestão de renovação passa a ser exclusiva do plugin Vindi.
+
+
 = 1.1.12 - 08/06/2022 =
 -Lançamento da versão de patch.
 - **Correção**: Foi removido o envio da descrição do produto para a plataforma Vindi para evitar possíveis erros no cadastro de produtos.
