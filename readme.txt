@@ -7,11 +7,11 @@ Tags: vindi, subscriptions, pagamento-recorrente, cobranca-recorrente, cobrança
 Author URI: https://vindi.com.br/ | https://mentores.com.br
 Author: Vindi | Mentores Digital
 Requires at least: 4.4
-Tested up to: 5.8.2
+Tested up to: 6.0
 WC requires at least: 3.0.0
-WC tested up to: 4.8.0
+WC tested up to: 6.5.1
 Requires PHP: 5.6
-Stable Tag: 1.1.11 c
+Stable Tag: 1.1.12
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,12 +39,9 @@ Para dúvidas e suporte técnico, entre em contato com a equipe Vindi através d
 5. Configurações de pagamentos via cartão de crédito
 
 == Changelog ==
-= 1.1.11 c - 15/12/2021 =
+= 1.1.12 - 08/06/2022 =
 -Lançamento da versão de patch.
-- **Adição**: Clientes que possuírem a extensão "WooCommerce Memberships", terão os pedidos alterados para "Pendente de cancelamento" ao invés de "Aguardando".
-Isso ocorre, pois o status "Aguardando" bloqueia as funcionalidades concedidas pelo plugin até que o pagamento seja realizado. Já o status "Pendente de cancelamento" matem as funcionalidades ativas durante o período de pendência de pagamento.
-Após a confirmação de pagamento, foi adicionada uma rotina que atualiza a assinatura para ativa.
-- **Adição**: Caso o método de pagamento seja Boleto bancário, o tempo de compensação do boleto será acrecido na duração do primeiro período. Evitando que o cliente tenha seu tempo de acesso prejudicado por conta do método de pagamento escolhido.
+- **Correção**: Foi removido o envio da descrição do produto para a plataforma Vindi para evitar possíveis erros no cadastro de produtos.
 
 
 = 1.1.11 - 07/12/2021 =
