@@ -118,7 +118,8 @@ class VindiWebhooks
     update_post_meta($order->id, 'vindi_order', $order_post_meta);
     $this->vindi_settings->logger->log('Novo Período criado: Pedido #'.$order->id);
 
-    if ($this->vindi_settings->dependencies->is_wc_memberships_active()) {
+    if ($this->vindi_settings->dependencies->is_wc_memberships_active()
+      && !$subscription->has_status('pending-cancel')) {
       $subscription->update_status(
         'pending-cancel',
         'O status da assinatura foi atualizado pela Vindi ' .
