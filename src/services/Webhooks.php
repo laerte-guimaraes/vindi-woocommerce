@@ -126,8 +126,7 @@ class VindiWebhooks
         'para evitar bloqueios de acesso em clientes relacionados ao plugin WooCommerce Memberships'
       );
 
-      $end_date = date('Y-m-d H:i:s', strtotime($renew_infos['bill_due_at'] . ' + 4 days'));
-      $subscription->update_dates(array('end_date' => $end_date));
+      $subscription->update_dates(array('end_date' => $this->format_date($renew_infos['bill_due_at'])));
     }
 
     // We've already processed the renewal

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Plugin Name: Vindi WooCommerce 2 CUSTOM v5
+ * Plugin Name: Vindi WooCommerce 2 CUSTOM v6
  * Plugin URI: https://github.com/vindi/vindi-woocommerce
  * Description: Adiciona o gateway de pagamento da Vindi para o WooCommerce.
  * Author: Vindi
  * Author URI: https://www.vindi.com.br
- * Version: 1.1.12.1 c
+ * Version: 1.1.12.2 c
  * Requires at least: 4.4
  * Tested up to: 6.0
  * WC requires at least: 3.0.0
