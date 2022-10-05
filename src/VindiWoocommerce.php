@@ -86,6 +86,11 @@ class WC_Vindi_Payment extends AbstractInstance
     add_filter('woocommerce_payment_gateways', array(&$this, 'add_gateway'));
 
     /**
+      * Aways display payment methods on checkout
+      */
+    add_filter( 'woocommerce_cart_needs_payment', '__return_true' );
+
+    /**
       * Register webhook handler
       */
     add_action('woocommerce_api_' . self::WC_API_CALLBACK, array(
